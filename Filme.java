@@ -112,9 +112,10 @@ public abstract class Filme {
 		System.out.println("Filme: "+nome+"\nCategoria: "+categoria+"\nDuração: "+duracao
 				+"\nClassificação indicativa: "+classificacaoIndicativa+"\n -----Descrição-----\n"+descricao);
 
+		System.out.println();
+		System.out.println();
+		System.out.println();
 	}
-
-
 
 
 }

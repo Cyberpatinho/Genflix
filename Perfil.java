@@ -112,28 +112,6 @@ public class Perfil {
 
     }
 
-    /*public void escolhaPlano() {
-        System.out.println("Selecione o tipo de plano: (1-Individual | 2-Casal | 3-Família)");
-        Scanner leia = new Scanner(System.in);
-        int x = leia.nextInt();
-        if (x < 0 || x > 3) {
-            while (x < 0 || x > 3) {
-                System.out.println("Plano inválido! Digite novamente.");
-                x = leia.nextInt();
-            }
-        }
-        if (x == 1) {
-            System.out.println("Plano Individual selecionado!");
-        }
-        else if (x == 2) {
-            System.out.println("Plano Casal selecionado!");
-        }
-        else {
-            System.out.println("Plano Família selecionado!");
-        }
-        leia.close();
-    }
-    */
     public void alterarPlano() {
 
         System.out.println("\n\n-----ALTERAÇÃO DE PLANO-----");

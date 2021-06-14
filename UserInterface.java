@@ -100,7 +100,7 @@ public class UserInterface extends Perfil {
         return s;
     }
 
-    public void clear(){ for(int i = 0; i<30; i++) System.out.println(); }
+    public void clear(){ for(int i = 0; i<40; i++) System.out.println(); }
 
     // - Getters e Setters
     public ArrayList<Filme> getFav() { return favs; }
