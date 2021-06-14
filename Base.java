@@ -13,7 +13,16 @@ public class Base extends UserList{
             movieDB.add(new ArrayList<Filme>());
             for(int j = 0; j < 37; j++){
                 //Consertar isso com aqui com todos os tipos de filmes
-                movieDB.get(i).add(new Romance("Filme " + j, "Animação", 120, "Livre", 0, "Descrição Teste"));
+                if(i == 0) movieDB.get(0).add(new Animacao("Animação " + j, "Animação", 120, "Livre", 0, "Descrição Teste"));
+                if(i == 1) movieDB.get(1).add(new Ficcao("Ficção  " + j, "Ficção Científica", 120, "Livre", 0, "Descrição Teste"));
+                if(i == 2) movieDB.get(2).add(new Suspense("Suspense " + j, "Suspense", 120, "Livre", 0, "Descrição Teste"));
+                if(i == 3) movieDB.get(3).add(new Terror("Terror " + j, "Terror", 120, "Livre", 0, "Descrição Teste"));
+                if(i == 4) movieDB.get(4).add(new Aventura("Aventura " + j, "Aventura", 120, "Livre", 0, "Descrição Teste"));
+                if(i == 5) movieDB.get(5).add(new Comedia("Comédia " + j, "Comédia", 120, "Livre", 0, "Descrição Teste"));
+                if(i == 6) movieDB.get(6).add(new Romance("Romance " + j, "Romance", 120, "Livre", 0, "Descrição Teste"));
+                if(i == 7) movieDB.get(7).add(new Acao("Ação " + j, "Ação", 120, "Livre", 0, "Descrição Teste"));
+                if(i == 8) movieDB.get(8).add(new Drama("Drama " + j, "Drama", 120, "Livre", 0, "Descrição Teste"));
+                if(i == 9) movieDB.get(9).add(new Documentarios("Documentário " + j, "Documentários", 120, "Livre", 0, "Descrição Teste"));
             }
         }
 
@@ -52,63 +61,64 @@ public class Base extends UserList{
 
                 // - Iniciar o filme atual
                 if (x == 1) {
-                    if(movie == null) System.out.println("Você não selecionou um filme!");
+                    if(movie == null) System.out.println("Você não selecionou um filme!\n\n");
                     else{
                         user.start(movie);
                         movie.efeitoVisual();
                         movie.mensagemInicio();
-                    }
 
-                    boolean playing = false;
+                        boolean playing = false;
 
-                    while (true) {
+                        while (true) {
 
-                        System.out.println("\n-----MENU DE FILME-----");
-                        System.out.println("Digite o que gostaria de fazer: ");
-                        System.out.println("1 - Continuar / Pausar");
-                        System.out.println("2 - Parar");
-                        System.out.println("3 - Favoritar");
-                        System.out.println("4 - Deixar avaliação");
-                        System.out.println("5 - Deixar comentário");
-                        System.out.println("6 - Ver avaliações");
+                            System.out.println("\n-----MENU DE FILME-----");
+                            System.out.println("Digite o que gostaria de fazer: ");
+                            System.out.println("1 - Continuar / Pausar");
+                            System.out.println("2 - Parar");
+                            System.out.println("3 - Favoritar");
+                            System.out.println("4 - Deixar avaliação");
+                            System.out.println("5 - Deixar comentário");
+                            System.out.println("6 - Ver avaliações");
 
-                        int y = user.checker(1, 6, "");
-                        user.clear();
-
-                        if (y == 1) {
+                            int y = user.checker(1, 6, "");
                             user.clear();
-                            if (!playing) user.pause();
-                            else user.play(movie);
-                            playing = !playing;
 
-                        }
-                        if (y == 2) {
-                            user.setTotalWatched(user.getTotalWatched() + 1);
-                            break;
-                        }
+                            if (y == 1) {
+                                user.clear();
+                                if (!playing) user.pause();
+                                else user.play(movie);
+                                playing = !playing;
 
-                        if (y == 3) user.addFavs(movie);
+                            }
+                            if (y == 2) {
+                                user.setTotalWatched(user.getTotalWatched() + 1);
+                                break;
+                            }
 
-                        if (y == 4) {
-                            movie.setNota(movie.getNota() + user.rate(movie));
-                            movie.setContaNota(movie.getContaNota() + 1);
-                        }
-                        if (y == 5) {
-                            String s = user.comment();
-                            movie.getComentario().add("\n\"" + s + "\"\n   —— " + user.getNome());
-                            System.out.println("Muito Obrigado! Sua opinião é muito importante para nós!");
+                            if (y == 3) user.addFavs(movie);
 
-                        }
-                        if (y == 6) {
-                            user.showRating(movie);
-                            for (int j = 0; j < movie.getComentario().size(); j++) {
-                                System.out.println(movie.getComentario().get(j));
+                            if (y == 4) {
+                                movie.setNota(movie.getNota() + user.rate(movie));
+                                movie.setContaNota(movie.getContaNota() + 1);
+                            }
+                            if (y == 5) {
+                                String s = user.comment();
+                                movie.getComentario().add("\n\"" + s + "\"\n   —— " + user.getNome());
+                                System.out.println("Muito Obrigado! Sua opinião é muito importante para nós!");
+
+                            }
+                            if (y == 6) {
+                                user.showRating(movie);
+                                for (int j = 0; j < movie.getComentario().size(); j++) {
+                                    System.out.println(movie.getComentario().get(j));
+
+                                }
 
                             }
 
                         }
-
                     }
+
 
                 }
 
