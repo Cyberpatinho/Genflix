@@ -1,8 +1,6 @@
 package gen;
 
-
 import java.util.*;
-
 public class Base extends UserList{
 
     public static void main(String[] args) {
@@ -25,6 +23,21 @@ public class Base extends UserList{
                 if(i == 9) movieDB.get(9).add(new Documentarios("Documentário " + j, "Documentários", 120, "Livre", 0, "Descrição Teste"));
             }
         }
+
+        //Apresentação
+        movieDB.get(4).get(15).setNome("O Senhor dos Anéis - A Sociedade do Anel");
+        movieDB.get(4).get(15).setCategoria("Aventura");
+        movieDB.get(4).get(15).setDuracao(228);
+        movieDB.get(4).get(15).setClassificacaoIndicativa("Não recomendado para menores de 12 anos");
+        movieDB.get(4).get(15).setDescricao("Em uma terra fantástica e única, um hobbit recebe de presente de seu tio um anel mágico e maligno que precisa ser destruído antes \nque caia nas mãos do mal. Para isso, o hobbit Frodo tem um caminho árduo pela frente, onde encontra perigo, medo e seres bizarros.\n Ao seu lado para o cumprimento desta jornada, ele aos poucos pode contar com outros hobbits, um elfo, um anão, dois humanos e um mago, \ntotalizando nove seres que formam a Sociedade do Anel.");
+
+        //Apresentação
+        movieDB.get(1).get(15).setNome("Interestelar");
+        movieDB.get(1).get(15).setCategoria("Aventura/Ficção Científica");
+        movieDB.get(1).get(15).setDuracao(169);
+        movieDB.get(1).get(15).setClassificacaoIndicativa("Não recomendado para menores de 10 anos");
+        movieDB.get(1).get(15).setDescricao("As reservas naturais da Terra estão chegando ao fim e um grupo de astronautas recebe a missão de verificar possíveis planetas para \nreceberem a população mundial, possibilitando a continuação da espécie. Cooper é chamado para liderar o grupo e aceita a missão \nsabendo que pode nunca mais ver os filhos. Ao lado de Brand, Jenkins e Doyle, ele seguirá em busca de um novo lar.\n");
+
 
         //Inicialização do database de usuários
         ArrayList<Perfil> userDB = new ArrayList<Perfil>();
@@ -157,8 +170,14 @@ public class Base extends UserList{
                         else if (z == cnt - 1) p = Math.min(p, movieDB.get(y).size() - 6);
                         else if (z == cnt - 2) p = Math.max(0, p - 12);
                         else {
-                            movie = movieDB.get(y).get(15);
-                            movie.apresentarInfo();
+                            //Apresentação
+                            if(user.getLogin() == "brunologin" || user.getLogin() == "zinhafofinha") {
+                                movie = movieDB.get(4).get(15);
+                                movie.apresentarInfo();
+                            }
+                            else{
+                                movie = movieDB.get(y).get(15);
+                            }
                             break;
                         }
                     }
@@ -169,14 +188,15 @@ public class Base extends UserList{
                 else if (x == 3) {
                     int cat = (int) (Math.random() * 10);
                     int mov = (int) (Math.random() * movieDB.get(cat).size());
-                    Filme rec = movieDB.get(cat).get(mov);
-                    rec.apresentarInfo();
+                    //Filme rec = movieDB.get(cat).get(mov);
+                    //rec.apresentarInfo();
+                    movie = movieDB.get(1).get(15);
+                    movie.apresentarInfo();
                     System.out.println("Gostaria de assistir? (1 - Sim | 2 - Não)");
 
                     int y = user.checker(1, 2, "(1 - Sim | 2 - Não)");
 
-                    movie = rec;
-
+                    //Apresentação
                 }
 
                 // - Sistema de Pontos
@@ -190,7 +210,7 @@ public class Base extends UserList{
                     System.out.println("- Auxílio a Idosos");
                     System.out.println("- Resgate de animais abandonados");
                     System.out.println("- Assessoria a defencientes");
-                    System.out.println("Número de moedas GenFlix: " + user.getTotalWatched());
+                    System.out.println("\nNúmero de moedas GenFlix: " + user.getTotalWatched());
                     System.out.println();
                     System.out.println();
                     System.out.println();
